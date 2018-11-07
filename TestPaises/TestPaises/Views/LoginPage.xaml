@@ -92,6 +92,7 @@
                         Command="{Binding LoginCommand}"
                         BorderRadius="23"
                         HorizontalOptions="FillAndExpand"
+                        IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
                         HeightRequest="46"
                         Text="Login">
                     </Button>
@@ -101,6 +102,7 @@
                         
                         HorizontalOptions="FillAndExpand"
                         BackgroundColor="Purple"
+                        IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
                         HeightRequest="46"
                         BorderRadius="23"
                         Text="Register">
