@@ -1,9 +1,8 @@
-﻿
-
-namespace TestPaises.ViewModels
+﻿namespace TestPaises.ViewModels
 {
     using GalaSoft.MvvmLight.Command;
     using System.Windows.Input;
+    using Views;
     using Xamarin.Forms;
 
     public class LoginViewModel : BaseViewModel
@@ -18,7 +17,11 @@ namespace TestPaises.ViewModels
         #endregion
 
         #region Properties
-        public string Email { get; set; }
+        public string Email
+        {
+            get { return this.email; }
+            set { SetValue(ref this.email, value); }
+        }
         public string Password
         {
             get { return this.password; }
@@ -87,12 +90,13 @@ namespace TestPaises.ViewModels
             this.IsRunning = false;
             this.IsEnabled = true;
 
-            await Application.Current.MainPage.DisplayAlert(
-                    "Ok",
-                    "Fuck yeah",
-                    "Accept");
-            return;
+            this.Email = string.Empty;
+            this.Password = string.Empty;
 
+            MainViewModel.GetInstance().Paises = new PaisesViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new PaisesPage());
+
+            // https://restcountries.eu/rest/v2/all
         }
         #endregion
 
